@@ -10,7 +10,6 @@ function solution(N, road, K) {
   dist[1] = 0;
 
   for (let i = 1; i <= N; i++) {
-    // 아직 방문하지 않은 노드 중에서 가장 거리 짧은 노드 선택
     let minDist = Infinity;
     let now = -1;
 
@@ -24,7 +23,6 @@ function solution(N, road, K) {
     if (now === -1) break;
     visited[now] = true;
 
-    // 현재 노드를 기준으로 인접 노드 거리 갱신
     for (const [next, cost] of graph[now]) {
       if (dist[now] + cost < dist[next]) {
         dist[next] = dist[now] + cost;
@@ -32,6 +30,5 @@ function solution(N, road, K) {
     }
   }
 
-  // K 이하로 도달 가능한 마을 수 반환
   return dist.filter((d) => d <= K).length;
 }
